@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Event;
-use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
@@ -24,6 +23,8 @@ class EventFixtures extends AbstractFixtures implements DependentFixtureInterfac
             $event->setDateStartInscrip($this->faker->dateTimeBetween('-3 month', '+3 month'));
             $event->setDateEndInscrip($this->faker->dateTimeBetween('-2 month', '+2 month'));
             $event->setDateEnd($this->faker->dateTimeBetween('-3 month', '+3 month'));
+
+            $this->setReference('event_' .$i , $event);
 
             $event->setUser($this->getReference('user_' . $this->faker->randomNumber(1, 10)));
 
