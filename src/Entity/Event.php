@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +36,31 @@ class Event
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_end = null;
+
+    #[ORM\ManyToOne(inversedBy: 'event')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
+    /**
+     * @var Collection<int, inscription>
+     */
+    #[ORM\OneToMany(targetEntity: inscription::class, mappedBy: 'event')]
+    private Collection $inscription;
+
+    /**
+     * @var Collection<int, category>
+     */
+    #[ORM\ManyToMany(targetEntity: category::class, inversedBy: 'events')]
+    private Collection $category;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?rank $ranked = null;
+
+    public function __construct()
+    {
+        $this->inscription = new ArrayCollection();
+        $this->category = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +147,84 @@ class Event
     public function setDateEnd(\DateTimeInterface $date_end): static
     {
         $this->date_end = $date_end;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, inscription>
+     */
+    public function getInscription(): Collection
+    {
+        return $this->inscription;
+    }
+
+    public function addInscription(inscription $inscription): static
+    {
+        if (!$this->inscription->contains($inscription)) {
+            $this->inscription->add($inscription);
+            $inscription->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(inscription $inscription): static
+    {
+        if ($this->inscription->removeElement($inscription)) {
+            // set the owning side to null (unless already changed)
+            if ($inscription->getEvent() === $this) {
+                $inscription->setEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, category>
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(category $category): static
+    {
+        if (!$this->category->contains($category)) {
+            $this->category->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(category $category): static
+    {
+        $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    public function getRanked(): ?rank
+    {
+        return $this->ranked;
+    }
+
+    public function setRanked(?rank $ranked): static
+    {
+        $this->ranked = $ranked;
 
         return $this;
     }

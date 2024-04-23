@@ -17,6 +17,12 @@ class Rank
     #[ORM\Column]
     private ?int $number = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?team $team = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?inscription $inscription = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -30,6 +36,30 @@ class Rank
     public function setNumber(int $number): static
     {
         $this->number = $number;
+
+        return $this;
+    }
+
+    public function getTeam(): ?team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?team $team): static
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    public function getInscription(): ?inscription
+    {
+        return $this->inscription;
+    }
+
+    public function setInscription(?inscription $inscription): static
+    {
+        $this->inscription = $inscription;
 
         return $this;
     }

@@ -19,6 +19,17 @@ class Inscription
     #[ORM\Column(length: 50)]
     private ?string $mail = null;
 
+    #[ORM\ManyToOne(inversedBy: 'inscription')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'inscription')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Event $event = null;
+
+    #[ORM\ManyToOne(inversedBy: 'inscription')]
+    private ?Team $team = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +55,42 @@ class Inscription
     public function setMail(string $mail): static
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getEvent(): ?Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(?Event $event): static
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?Team $team): static
+    {
+        $this->team = $team;
 
         return $this;
     }
