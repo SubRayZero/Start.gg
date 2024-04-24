@@ -54,11 +54,11 @@ class Event
     /**
      * @var Collection<int, category>
      */
-    #[ORM\ManyToMany(targetEntity: category::class, inversedBy: 'events')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'events')]
     private Collection $category;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?rank $ranked = null;
+    private ?Rank $ranked = null;
 
     #[Vich\UploadableField(mapping: 'event', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
@@ -181,7 +181,7 @@ class Event
         return $this->inscription;
     }
 
-    public function addInscription(inscription $inscription): static
+    public function addInscription(Inscription $inscription): static
     {
         if (!$this->inscription->contains($inscription)) {
             $this->inscription->add($inscription);
@@ -191,7 +191,7 @@ class Event
         return $this;
     }
 
-    public function removeInscription(inscription $inscription): static
+    public function removeInscription(Inscription $inscription): static
     {
         if ($this->inscription->removeElement($inscription)) {
             // set the owning side to null (unless already changed)
@@ -211,7 +211,7 @@ class Event
         return $this->category;
     }
 
-    public function addCategory(category $category): static
+    public function addCategory(Category $category): static
     {
         if (!$this->category->contains($category)) {
             $this->category->add($category);
@@ -220,19 +220,19 @@ class Event
         return $this;
     }
 
-    public function removeCategory(category $category): static
+    public function removeCategory(Category $category): static
     {
         $this->category->removeElement($category);
 
         return $this;
     }
 
-    public function getRanked(): ?rank
+    public function getRanked(): ?Rank
     {
         return $this->ranked;
     }
 
-    public function setRanked(?rank $ranked): static
+    public function setRanked(?Rank $ranked): static
     {
         $this->ranked = $ranked;
 

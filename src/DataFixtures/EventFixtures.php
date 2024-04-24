@@ -27,7 +27,7 @@ class EventFixtures extends AbstractFixtures implements DependentFixtureInterfac
             $this->setReference('event_' .$i , $event);
 
             $event->setUser($this->getReference('user_' . $this->faker->randomNumber(1, 10)));
-            $event->setRanked($this->getReference('rank_' . $this->faker->randomNumber(1, 7)));
+           // $event->setRanked($this->getReference('rank_' . $this->faker->randomNumber(1, 7)));
 
             $manager->persist($event);
         }
@@ -38,7 +38,7 @@ class EventFixtures extends AbstractFixtures implements DependentFixtureInterfac
     {
         return [
             UserFixtures::class,
-            RankFixtures::class,
+            //RankFixtures::class,
         ];
     }
 }
