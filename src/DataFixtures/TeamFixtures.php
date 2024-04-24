@@ -16,7 +16,6 @@ class TeamFixtures extends AbstractFixtures
             
             $team->setName($this->faker->userName());
 
-
             $this->setReference('team_' .$i , $team);
 
             $manager->persist($team);
