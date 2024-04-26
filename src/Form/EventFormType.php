@@ -8,6 +8,7 @@ use App\Entity\Rank;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,6 +17,10 @@ class EventFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+            ->add('imageFile', FileType::class, [
+                'required' => false,
+            ])
             ->add('name')
             ->add('description')
             ->add('cashprize')
@@ -31,21 +36,11 @@ class EventFormType extends AbstractType
             ->add('date_end', null, [
                 'widget' => 'single_text',
             ])
-            ->add('imageName')
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
                 'multiple' => true,
-            ])
-            ->add('ranked', EntityType::class, [
-                'class' => Rank::class,
-                'choice_label' => 'id',
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

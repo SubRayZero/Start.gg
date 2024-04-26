@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EventRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -39,6 +40,7 @@ class Event
     private ?\DateTimeInterface $date_end_inscrip = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\GreaterThan(propertyPath: "date_start", message: "La date de fin doit être ultérieure à la date de début.")]
     private ?\DateTimeInterface $date_end = null;
 
     #[ORM\ManyToOne(inversedBy: 'event')]
@@ -242,8 +244,7 @@ class Event
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
-
-        }
+    }
 
     public function getImageFile(): ?File
     {

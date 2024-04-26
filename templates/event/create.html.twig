@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EventController!
+{% endblock %}
+
+{% block body %}
+	<header class="header">
+		<nav class="navbar navbar-expand-lg navbar-dark bg header">
+			<div class="container">
+				<a class="navbar-brand" href="#">Navbar</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+					<ul class="navbar-nav header_gap">
+						<li class="nav-item">
+							<a class="nav-link header" href="{{ path('app_home') }}">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header" href="#">Discover</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header" href="{{ path('app_logout') }}">Logout</a>
+						</li>
+					</ul>
+					<form class="d-flex">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+	{{ form_start(createEvent) }}
+	{{ form_errors(createEvent) }}
+	<div class="container">
+		<div class="example-wrapper">
+			<h1>New Tournament</h1>
+
+			<div class="mb-3">
+					{{ form_errors(createEvent.imageFile) }}
+					<label for="exampleInputText1" class="form-label">Image</label>
+					{{ form_widget(createEvent.imageFile, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+
+			</div>
+
+			<div class="mb-3">
+				{{ form_errors(createEvent.name) }}
+				<label for="exampleInputText1" class="form-label">Name</label>
+				{{ form_widget(createEvent.name, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+			</div>
+
+			<div class="mb-3">
+				{{ form_errors(createEvent.description) }}
+				<label for="exampleInputText1" class="form-label">Description</label>
+				{{ form_widget(createEvent.description, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+			</div>
+
+			<div class="mb-3">
+				{{ form_errors(createEvent.cashprize) }}
+				<label for="exampleFormControlTextarea1" class="form-label">Cashprize</label>
+				{{ form_widget(createEvent.cashprize, {'attr':{'class': 'form-control', 'id': 'exampleFormControlTextarea1', 'rows' : '3'}}
+				)}}
+			</div>
+
+			<div class="mb-3">
+				{{ form_errors(createEvent.date_start) }}
+				<label for="exampleFormControlTextarea1" class="form-label">Date start</label>
+				{{ form_widget(createEvent.date_start, {'attr':{'class': 'form-control', 'id': 'exampleFormControlTextarea1', 'rows' : '3'}}
+				)}}
+			</div>
+
+			<div class="mb-3">
+				{{ form_errors(createEvent.date_end) }}
+				<label for="exampleFormControlTextarea1" class="form-label">Date end</label>
+				{{ form_widget(createEvent.date_end, {'attr':{'class': 'form-control', 'id': 'exampleFormControlTextarea1', 'rows' : '3'}}
+				)}}
+			</div>
+
+			<div class="mb-3">
+				{{ form_errors(createEvent.date_start_inscrip) }}
+				<label for="exampleFormControlTextarea1" class="form-label">Date start for inscription</label>
+				{{ form_widget(createEvent.date_start_inscrip, {'attr':{'class': 'form-control', 'id': 'exampleFormControlTextarea1', 'rows' : '3'}}
+				)}}
+			</div>
+
+			<div class="mb-3">
+				{{ form_errors(createEvent.date_end_inscrip) }}
+				<label for="exampleFormControlTextarea1" class="form-label">Date end for inscription</label>
+				{{ form_widget(createEvent.date_end_inscrip, {'attr':{'class': 'form-control', 'id': 'exampleFormControlTextarea1', 'rows' : '3'}}
+				)}}
+			</div>
+
+			<div class="mb-3">
+				{{ form_errors(createEvent.category) }}
+				<label for="exampleFormControlTextarea1" class="form-label">Category</label>
+				{{ form_widget(createEvent.category, {'attr':{'class': 'form-control', 'id': 'exampleFormControlTextarea1', 'rows' : '3'}}
+				)}}
+			</div>
+
+			<button type="submit" class="btn btn-primary">Validation</button>
+		</div>
+	</div>
+	{{ form_end(createEvent) }}
+
+
+{% endblock %}

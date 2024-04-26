@@ -33,6 +33,12 @@
 		</nav>
 	</header>
 
+	{% if app.user %}
+		<script>
+			window.location.href = "{{ path('app_profil') }}";
+		</script>
+	{% endif %}
+
 	<div class="container container_form_log">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
@@ -54,7 +60,7 @@
 								</label>
 							</div>
 
-							<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+							<button class="btn btn-lg btn-primary btn-block button_hover" type="submit">Sign in</button>
 						</form>
 					</div>
 				</div>

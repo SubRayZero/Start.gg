@@ -1,20 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Hello ProfilController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<header class="header">
+		<nav class="navbar navbar-expand-lg navbar-dark bg header">
+			<div class="container">
+				<a class="navbar-brand" href="#">Navbar</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+					<ul class="navbar-nav header_gap">
+						<li class="nav-item">
+							<a class="nav-link header" href="{{ path('app_home') }}">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header" href="{{ path('app_create_event') }}">Create tournament</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header" href="#">Discover</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header" href="{{ path('app_logout') }}">Logout</a>
+						</li>
+					</ul>
+					<form class="d-flex">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section class="section_profil">
+		<div class="card" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">Informations personals</h5>
+				<p class="card-text">Pseudo :
+					{{ app.user.pseudo }}</p>
+				<p class="card-text">Email :
+					{{ app.user.email }}</p>
+				<a href="{{ path('app_register') }}">
+					<button class="btn button_hover">Modify
+					</button>
+				</a>
+			</div>
+		</div>
+	</section>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<section class="section_profil">
+		<h5 class="card-title">Tournaments</h5>
+	</section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/jasmi/Documents/Projet_9/Start.gg/src/Controller/ProfilController.php</code></li>
-        <li>Your template at <code>C:/Users/jasmi/Documents/Projet_9/Start.gg/templates/profil/index.html.twig</code></li>
-    </ul>
-</div>
+
 {% endblock %}

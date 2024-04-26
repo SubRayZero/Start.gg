@@ -37,19 +37,19 @@
 		<div class="title">Start.wp
 			<p class="sub_title">Community through competition</p>
 			<a href="{{ path('app_register') }}">
-				<button class="btn">Organize a competition
+				<button class="btn button_hover">Organize a competition
 				</button>
 			</a>
 			<a href="{{ path('app_profil') }}">
-				<button class="btn">Find a competition
+				<button class="btn button_hover">Find a competition
 				</button>
 			</a>
 		</div>
 	</section>
 	<div class="card_flex">
 		{% for event in events %}
-			<div class="card" style="width: 18rem;">*
-				<img src="..." class="card-img-top" alt="...">
+			<div class="card" style="width: 18rem;">
+				<img src="{{ vich_uploader_asset(event, 'imageFile') }}">
 				<div class="card-body">
 					<h3 class="card-title">{{ event.name}}</h3>
 					<p class="card-text">{{event.description}}</p>

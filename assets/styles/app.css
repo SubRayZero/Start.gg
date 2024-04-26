@@ -12,6 +12,10 @@ a {
     color: #FDFDFD;
 }
 
+.button_hover:hover{
+    background-color: #202020;
+}
+
 .header {
     color: #FDFDFD;
     background-color: #202020;
@@ -81,4 +85,14 @@ a {
 
 .container_form_log{
     margin-top: 150px;
+}
+
+.section_profil{
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.register_infor{
+    font-weight: bolder;
 }
