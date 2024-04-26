@@ -18,7 +18,7 @@ class Rank
     private ?int $number = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?team $team = null;
+    private ?Team $team = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Inscription $inscription = null;
