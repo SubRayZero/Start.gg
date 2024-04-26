@@ -1,3 +1,17 @@
+body{
+    background-color: #FDFDFD;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: #FDFDFD;
+}
+
 .header {
     color: #FDFDFD;
     background-color: #202020;
@@ -34,7 +48,7 @@
     font-weight: 600;
 }
 
-.sub_title{
+.sub_title {
     position: relative;
     width: 600px;
     height: 39px;
@@ -44,4 +58,27 @@
     font-weight: normal;
 
     text-align: center;
+}
+
+.card_flex {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 30px;
+}
+
+.card_black{
+    background-color:#202020;
+    color: #FDFDFD;
+}
+
+.container_form{
+    margin-top: 30px;
+}
+
+.container_form_log{
+    margin-top: 150px;
 }

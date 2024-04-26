@@ -48,7 +48,7 @@ class Event
     /**
      * @var Collection<int, inscription>
      */
-    #[ORM\OneToMany(targetEntity: inscription::class, mappedBy: 'event')]
+    #[ORM\OneToMany(targetEntity: Inscription::class, mappedBy: 'event')]
     private Collection $inscription;
 
     /**

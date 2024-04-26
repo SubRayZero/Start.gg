@@ -1,37 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+	<header class="header">
+		<nav class="navbar navbar-expand-lg navbar-dark bg header">
+			<div class="container">
+				<a class="navbar-brand" href="#">Navbar</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+					<ul class="navbar-nav header_gap">
+						<li class="nav-item">
+							<a class="nav-link header" href="{{ path('app_home') }}">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header" href="{{ path('app_register') }}">Register</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header" href="#">Discover</a>
+						</li>
+					</ul>
+					<form class="d-flex">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</header>
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+	<div class="container container_form_log">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card card_black">
+					<div class="card-body">
+						<form class="form-signin" action="{{ path('app_login') }}" method="post">
+							<h1 class="card-title text-center">Login</h1>
+							<label for="inputEmail" class="sr-only">Email address</label>
+							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email address" autocomplete="email" required autofocus>
+							<label for="inputPassword" class="sr-only">Password</label>
+							<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" autocomplete="current-password" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> Remember me
-        </label>
-    </div>
+							<div class="checkbox mb-3">
+								<label>
+									<input type="checkbox" name="_remember_me">
+									Remember me
+								</label>
+							</div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
