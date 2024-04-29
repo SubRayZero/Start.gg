@@ -24,7 +24,7 @@ img {
     color: #FDFDFD;
 }
 
-.offcanvas_black{
+.offcanvas_black {
     background-color: #202020;
     color: #FDFDFD;
 }
@@ -119,7 +119,7 @@ img {
     background-color: lightblue;
 }
 
-.details_title{
+.details_title {
     width: 600px;
     height: 100%;
 
@@ -133,37 +133,37 @@ img {
     background-color: #202020;
 }
 
-.details_image{
+.details_image {
     width: 100%;
     height: 100%;
 
 }
 
-.title_upper{
+.title_upper {
     text-transform: uppercase;
     font-weight: 600;
 }
 
-.date_event_font{
+.date_event_font {
     font-weight: 600;
 }
 
-.card_line{
+.card_line {
     border: none;
     background-color: #FDFDFD;
 }
 
-.container_tournament{
+.container_tournament {
     margin-top: 100px;
 }
 
-.result_tournament{
+.result_tournament {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.item_place{
+.item_place {
     height: 100px;
     width: 200px;
 
@@ -172,11 +172,35 @@ img {
     align-items: center;
 }
 
-.item_place_rank{
+.item_place_rank {
     height: 100px;
     width: 400px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.container_filter {
+    margin-left: 100px;
+}
+
+.container_filter_card {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+
+    margin-bottom: 50px;
+
+}
+
+.filter_black {
+    color: #202020;
+    display: flex;
+    justify-content: center;
+
+}
+
+.filter_black:hover {
+    color: #0FC9BE;
 }

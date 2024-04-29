@@ -33,28 +33,48 @@
 	</header>
 
 
-	<div class="row">
-		<div class="col-4">
-			<div id="list-example" class="list-group">
-				{% set counter = 1 %}
-				{% for category in categories %}
-					<a class="list-group-item list-group-item-action" href="#list-item-{{ counter }}">{{ category.name }}</a>
+	<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3 filter_black">
+		<ul class="nav">
+			{% set counter = 1 %}
+			{% for category in categories %}
+				<li class="nav-item">
+					<a class="nav-link filter_black" href="#scrollspyHeading-{{ counter }}">{{ category.name }}</a>
 					{% set counter = counter + 1 %}
 				{% endfor %}
-			</div>
-		</div>
+			</li>
 
-		<div class="col-8">
-			<div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-				{% for category in categories %}
-					<h4 id="list-item-{{ loop.index }}">{{ category.name }}</h4>
-					<p></p>
-					{% for event in category.events %}
-						<p>{{ event.name }}</p>
-					{% endfor %}
+		</ul>
+	</nav>
+
+	<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" class="container_filter">
+		{% for category in categories %}
+			<h4 id="scrollspyHeading-{{ loop.index }}">{{ category.name }}</h4>
+
+
+			<div class="container_filter_card">
+				{% for event in category.events %}
+					<div class="card" style="width: 18rem;">
+						<img src={{ vich_uploader_asset(event, 'imageFile') }}>
+						<div class="card-body">
+							<h3 class="card-title">{{ event.name}}</h3>
+							<p class="card-text">{{event.description}}</p>
+							<p class="card-text">{{event.cashprize}}
+								$</p>
+							<p>
+								Start :
+								{{ event.datestart | date("m/d/y")}}
+							</p>
+							<p>
+								End :{{ event.dateend | date("m/d/y")}}
+							</p>
+							<a href="{{ path('app_home_details', {'id': event.id}) }}">
+								<button class="btn button_hover">Details
+								</button>
+							</a>
+						</div>
+					</div>
 				{% endfor %}
 			</div>
-		</div>
-
-
-	{% endblock %}
+		{% endfor %}
+	</div>
+{% endblock %}
