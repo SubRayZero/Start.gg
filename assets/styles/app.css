@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #FDFDFD;
 }
 
@@ -13,11 +13,11 @@ a {
     color: #FDFDFD;
 }
 
-img{
+img {
     border-radius: 5px 5px 0 0;
 }
 
-.button_hover:hover{
+.button_hover:hover {
     background-color: #202020;
 }
 
@@ -79,25 +79,54 @@ img{
     gap: 30px;
 }
 
-.card_black{
-    background-color:#202020;
+.card_black {
+    background-color: #202020;
     color: #FDFDFD;
 }
 
-.container_form{
+.container_form {
     margin-top: 30px;
 }
 
-.container_form_log{
+.container_form_log {
     margin-top: 150px;
 }
 
-.section_profil{
+.section_profil {
     margin-top: 100px;
     margin-left: 100px;
     margin-right: 100px;
 }
 
-.register_infor{
+.register_infor {
     font-weight: bolder;
+}
+
+.container_details {
+    height: 228px;
+    width: 100%;
+    color: #FDFDFD;
+    display: flex;
+
+    background-color: lightblue;
+}
+
+.details_title{
+    width: 444px;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    background-color: #202020;
+}
+
+.details_image{
+    width: 100%;
+    height: 100%;
+
 }

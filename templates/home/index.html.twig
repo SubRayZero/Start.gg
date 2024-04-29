@@ -49,11 +49,12 @@
 	<div class="card_flex">
 		{% for event in events %}
 			<div class="card" style="width: 18rem;">
-				<img src="{{ vich_uploader_asset(event, 'imageFile') }}">
+				<img src={{ vich_uploader_asset(event, 'imageFile') }}>
 				<div class="card-body">
 					<h3 class="card-title">{{ event.name}}</h3>
 					<p class="card-text">{{event.description}}</p>
-					<p class="card-text">{{event.cashprize}}</p>
+					<p class="card-text">{{event.cashprize}}
+						$</p>
 					<p>
 						Start :
 						{{ event.datestart | date("m/d/y")}}
@@ -61,8 +62,8 @@
 					<p>
 						End :{{ event.dateend | date("m/d/y")}}
 					</p>
-					<a href="{{ path('app_profil') }}">
-						<button class="btn button_hover">Find a competition
+					<a href="{{ path('app_home_details', {'id': event.id}) }}">
+						<button class="btn button_hover">Details
 						</button>
 					</a>
 				</div>

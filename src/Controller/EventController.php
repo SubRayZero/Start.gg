@@ -54,6 +54,25 @@ class EventController extends AbstractController
         ]);
     }
 
+
+    #[Route('/home/{id}', name: 'app_home_details')]
+
+    public function eventDetails($id, EntityManagerInterface $entityManager, Request $request, Security $security)
+    {
+        $user = $this->getUser();
+
+        $eventRepository = $entityManager->getRepository(Event::class);
+        $events = $eventRepository->find($id);
+
+        return $this->render('event/details.html.twig', [
+            'controller_name' => 'EventController',
+            'user'=> $user,
+            'events' => $events,
+        ]);
+    }
+
+
+
     #[Route('/home', name: 'app_home_event')]
 
     public function EventAll(EntityManagerInterface $entityManager)
@@ -68,4 +87,19 @@ class EventController extends AbstractController
             'events' => $events
         ]);
     }
+
+    /*#[Route('/user/{id}/threads', name: 'app_user_threads')]
+    public function userThreads($id, EntityManagerInterface $entityManager): Response
+    {
+        $userRepository = $entityManager->getRepository(User::class);
+        $user = $userRepository->find($id);
+
+        $eventRepository = $entityManager->getRepository(Event::class);
+        $event = $eventRepository->findBy(['user' => $user]);
+
+        return $this->render('profil/user.html.twig', [
+            'user' => $user,
+            'event' => $event
+        ]);
+    }*/
 }
