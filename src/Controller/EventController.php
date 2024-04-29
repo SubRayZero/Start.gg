@@ -112,4 +112,16 @@ class EventController extends AbstractController
             'events' => $events
         ]);
     }
+
+    #[Route('/profil', name: 'app_profil_tournament')]
+    public function eventAllByUser(EntityManagerInterface $entityManager)
+    {
+        $user = $this->getUser();
+        $eventRepository = $entityManager->getRepository(Event::class);
+        $eventUser = $eventRepository->findBy(['user' => $user]);
+
+        return $this->render('profil/index.html.twig', [
+            'eventUser' => $eventUser
+        ]);
+    }
 }
