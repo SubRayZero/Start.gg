@@ -5,40 +5,6 @@
 
 {% block body %}
 
-	<header class="header">
-		<nav class="navbar navbar-expand-lg navbar-dark bg header">
-			<div class="container">
-				<a class="navbar-brand" href="#">Navbar</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-					<ul class="navbar-nav header_gap">
-						<li class="nav-item">
-							<a class="nav-link header" href="{{ path('app_home') }}">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link header" href="{{ path('app_register') }}">Register</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link header" href="#">Discover</a>
-						</li>
-					</ul>
-					<form class="d-flex">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn" type="submit">Search</button>
-					</form>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	{% if app.user %}
-		<script>
-			window.location.href = "{{ path('app_profil') }}";
-		</script>
-	{% endif %}
-
 	<div class="container container_form_log">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
@@ -60,7 +26,7 @@
 								</label>
 							</div>
 
-							<button class="btn btn-lg btn-primary btn-block button_hover" type="submit">Sign in</button>
+							<button type="submit" class="btn button_hover">Login</button>
 						</form>
 					</div>
 				</div>

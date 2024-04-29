@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Event;
 use App\Entity\Inscription;
+use App\Entity\Rank;
 use App\Entity\ResponseEntity;
 use App\Entity\User;
 use App\Form\EventFormType;
@@ -86,7 +87,10 @@ class EventController extends AbstractController
         }
 
         $inscriptionRepository = $entityManager->getRepository(Inscription::class);
-        $inscripUser = $inscriptionRepository->findBy(['user' => $user]);
+        $inscripUser = $inscriptionRepository->findBy(['user' => $user, 'event' => $events]);
+
+        $rankRepository = $entityManager->getRepository(Rank::class);
+        $rank = $rankRepository->findBy(['inscription' => $createInscrip]);
 
         return $this->render('event/details.html.twig', [
             'controller_name' => 'EventController',
@@ -94,6 +98,7 @@ class EventController extends AbstractController
             'events' => $events,
             'createInscrip' => $form,
             'inscripUser' => $inscripUser,
+            'rank' => $rank,
         ]);
     }
 

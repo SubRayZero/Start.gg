@@ -4,35 +4,6 @@
 {% endblock %}
 
 {% block body %}
-
-	<header class="header">
-		<nav class="navbar navbar-expand-lg navbar-dark bg header">
-			<div class="container">
-				<a class="navbar-brand" href="#">Navbar</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-					<ul class="navbar-nav header_gap">
-						<li class="nav-item">
-							<a class="nav-link header" href="{{ path('app_login') }}">Login</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link header" href="{{ path('app_register') }}">Register</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link header" href="{{ path('app_event_filter') }}">Discover</a>
-						</li>
-					</ul>
-					<form class="d-flex">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn" type="submit">Search</button>
-					</form>
-				</div>
-			</div>
-		</nav>
-	</header>
-
 	<section class="container_title">
 		<div class="title">Start.wp
 			<p class="sub_title">Community through competition</p>
