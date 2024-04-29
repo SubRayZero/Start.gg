@@ -84,11 +84,15 @@ class EventController extends AbstractController
             return $this->redirectToRoute('app_profil');
         }
 
+        $inscriptionRepository = $entityManager->getRepository(Inscription::class);
+        $inscripUser = $inscriptionRepository->findBy(['user' => $user]);
+
         return $this->render('event/details.html.twig', [
             'controller_name' => 'EventController',
             'user' => $user,
             'events' => $events,
             'createInscrip' => $form,
+            'inscripUser' => $inscripUser,
         ]);
     }
 
@@ -108,5 +112,4 @@ class EventController extends AbstractController
             'events' => $events
         ]);
     }
-
 }

@@ -38,48 +38,72 @@
 		<img class="details_image" src={{ vich_uploader_asset(events, 'imageFile') }}>
 	</section>
 
-	<div class="card text-center">
+	<div class="card text-center card_line">
 		<div class="card-body">
-			<h1 class="card-title">{{ events.name }}</h1>
+			<h1 class="card-title title_upper">{{ events.name }}</h1>
 			<h4 class="card-text">{{ events.cashprize }}
 				$</h4>
 			<p class="card-text">{{ events.description }}</p>
 			<p>
 				Start :
-				{{ events.datestart | date("m/d/y")}}
+				<span class="date_event_font">
+					{{ events.datestart | date("m/d/y")}}
+				</span>
 			</p>
 			<p>
-				End :{{ events.dateend | date("m/d/y")}}
+				End :
+				<span class="date_event_font">
+					{{ events.dateend | date("m/d/y")}}
+				</span>
 			</p>
-			<button class="btn button_hover" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-				Inscription
-			</button>
-		</div>
+			<p>
+				Start inscription :
+				<span class="date_event_font">
+					{{ events.datestartinscrip | date("m/d/y")}}
+				</span>
+			</p>
+		</span>
+	</p>
+	<p>
+		End inscription :
+		<span class="date_event_font">
+			{{ events.dateendinscrip | date("m/d/y")}}
+		</span>
+	</p>
+	<button class="btn button_hover" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+		Inscription
+	</button>
 
-	</div>
-	<div class="offcanvas offcanvas-start offcanvas_black" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-		<div class="offcanvas-header">
-			<h2 class="offcanvas-title" id="offcanvasExampleLabel">Inscription</h2>
-			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-		</div>
-		{{ form_start(createInscrip) }}
-		{{ form_errors(createInscrip) }}
-		<div class="offcanvas-body">
-			<div class="mb-3">
-				{{ form_errors(createInscrip.pseudo) }}
-				<label for="exampleInputText1" class="form-label">Pseudo</label>
-				{{ form_widget(createInscrip.pseudo, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
-			</div>
-			<div class="mb-3">
-				{{ form_errors(createInscrip.mail) }}
-				<label for="exampleInputText1" class="form-label">Email</label>
-				{{ form_widget(createInscrip.mail, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
-			</div>
-			<button class="btn button_hover">
-				Validation
-			</button>
-			{{ form_end(createInscrip) }}
-		</div>
-	</div>
+</div></div><div class="container container_tournament">
 
-</div>{% endblock %}
+{% for inscription in inscripUser %}
+	<div class="result_tournament">
+		<ul class="list-group list-group-horizontal">
+			<li class="list-group-item item_place">{{ inscription.pseudo }}</li>
+			<li class="list-group-item item_place_rank">A second item</li>
+			<li class="list-group-item item_place">A third item</li>
+		</ul>
+	</div>
+{% endfor %}</div><div class="offcanvas offcanvas-start offcanvas_black" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas-header">
+	<h2 class="offcanvas-title" id="offcanvasExampleLabel">Inscription</h2>
+	<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+{{ form_start(createInscrip) }}
+{{ form_errors(createInscrip) }}
+<div class="offcanvas-body">
+	<div class="mb-3">
+		{{ form_errors(createInscrip.pseudo) }}
+		<label for="exampleInputText1" class="form-label">Pseudo</label>
+		{{ form_widget(createInscrip.pseudo, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+	</div>
+	<div class="mb-3">
+		{{ form_errors(createInscrip.mail) }}
+		<label for="exampleInputText1" class="form-label">Email</label>
+		{{ form_widget(createInscrip.mail, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+	</div>
+	<button class="btn button_hover">
+		Validation
+	</button>
+	{{ form_end(createInscrip) }}
+</div></div></div>{% endblock %}

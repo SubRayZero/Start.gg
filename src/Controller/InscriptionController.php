@@ -15,31 +15,15 @@ class InscriptionController extends AbstractController
 {
 
 
-    /*#[Route('/home/{id}', name: 'app_create_inscription')]
-
-    public function createInscrip(Request $request, EntityManagerInterface $entityManager)
+  /*  #[Route('/profil', name: 'app_all_inscription')]
+    public function threadAllByUser(EntityManagerInterface $entityManager)
     {
-
-        $createInscrip = new Inscription();
-        $form = $this->createForm(InscriptionFormType::class, $createInscrip);
-        $form->handleRequest($request);
-
-        $entityManager->persist($createInscrip);
-        $entityManager->flush();
+        $user = $this->getUser();
+        $inscriptionRepository = $entityManager->getRepository(Inscription::class);
+        $inscripUser = $inscriptionRepository->findBy(['user' => $user]);
 
         return $this->render('event/details.html.twig', [
-            'controller_name' => 'EventController',
-            'createInscrip' => $form
-        ]);
-    }
-
-
-
-   /* #[Route('/inscription', name: 'app_inscription')]
-    public function index(): Response
-    {
-        return $this->render('inscription/index.html.twig', [
-            'controller_name' => 'InscriptionController',
+            'inscripUser' => $inscripUser
         ]);
     }*/
 }

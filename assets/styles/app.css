@@ -136,3 +136,45 @@ img {
     height: 100%;
 
 }
+
+.title_upper{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.date_event_font{
+    font-weight: 600;
+}
+
+.card_line{
+    border: none;
+    background-color: #FDFDFD;
+}
+
+.container_tournament{
+    margin-top: 100px;
+}
+
+.result_tournament{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_place{
+    height: 100px;
+    width: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_place_rank{
+    height: 100px;
+    width: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
