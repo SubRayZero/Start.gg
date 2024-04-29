@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Event;
 use App\Entity\Inscription;
 use App\Entity\ResponseEntity;
@@ -110,6 +111,24 @@ class EventController extends AbstractController
         return $this->render('home/index.html.twig', [
             'controller_name' => 'EventController',
             'events' => $events
+        ]);
+    }
+
+    #[Route('/filter', name: 'app_event_filter')]
+
+    public function EventFilter(EntityManagerInterface $entityManager)
+    {
+
+        $eventRepository = $entityManager->getRepository(Event::class);
+        $events = $eventRepository->findAll();
+
+        $categoryRepository = $entityManager->getRepository(Category::class);
+        $categories = $categoryRepository->findAll();
+
+        return $this->render('event/filter.html.twig', [
+            'controller_name' => 'EventController',
+            'events' => $events,
+            'categories' => $categories
         ]);
     }
 
