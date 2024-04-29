@@ -49,32 +49,38 @@
 	<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" class="container_filter">
 		{% for category in categories %}
 			<h4 id="scrollspyHeading-{{ loop.index }}">{{ category.name }}</h4>
-
-
 			<div class="container_filter_card">
-				{% for event in category.events %}
-					<div class="card" style="width: 18rem;">
-						<img src={{ vich_uploader_asset(event, 'imageFile') }}>
-						<div class="card-body">
-							<h3 class="card-title">{{ event.name}}</h3>
-							<p class="card-text">{{event.description}}</p>
-							<p class="card-text">{{event.cashprize}}
-								$</p>
-							<p>
-								Start :
-								{{ event.datestart | date("m/d/y")}}
-							</p>
-							<p>
-								End :{{ event.dateend | date("m/d/y")}}
-							</p>
-							<a href="{{ path('app_home_details', {'id': event.id}) }}">
-								<button class="btn button_hover">Details
-								</button>
-							</a>
+				{% if category.events is not empty %}
+
+
+					{% for event in category.events %}
+						<div class="card" style="width: 18rem;">
+							<img src={{ vich_uploader_asset(event, 'imageFile') }}>
+							<div class="card-body">
+								<h3 class="card-title">{{ event.name}}</h3>
+								<p class="card-text">{{event.description}}</p>
+								<p class="card-text">{{event.cashprize}}
+									$</p>
+								<p>
+									Start :
+									{{ event.datestart | date("m/d/y")}}
+								</p>
+								<p>
+									End :{{ event.dateend | date("m/d/y")}}
+								</p>
+								<a href="{{ path('app_home_details', {'id': event.id}) }}">
+									<button class="btn button_hover">Details
+									</button>
+								</a>
+							</div>
 						</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
+				{% else %}
+					<p>No tournaments found in this category.</p>
+				{% endif %}
 			</div>
+
 		{% endfor %}
+
 	</div>
 {% endblock %}
