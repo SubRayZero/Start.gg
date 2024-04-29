@@ -19,6 +19,12 @@ img {
 
 .button_hover:hover {
     background-color: #202020;
+    color: #FDFDFD;
+}
+
+.offcanvas_black{
+    background-color: #202020;
+    color: #FDFDFD;
 }
 
 .header {
@@ -112,7 +118,7 @@ img {
 }
 
 .details_title{
-    width: 444px;
+    width: 600px;
     height: 100%;
 
     display: flex;

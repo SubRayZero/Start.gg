@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Inscription;
 use App\Entity\ResponseEntity;
 use App\Entity\User;
 use App\Form\EventFormType;
+use App\Form\InscriptionFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -57,17 +59,36 @@ class EventController extends AbstractController
 
     #[Route('/home/{id}', name: 'app_home_details')]
 
-    public function eventDetails($id, EntityManagerInterface $entityManager, Request $request, Security $security)
+    public function eventDetails($id, EntityManagerInterface $entityManager, Request $request)
     {
+
         $user = $this->getUser();
 
         $eventRepository = $entityManager->getRepository(Event::class);
         $events = $eventRepository->find($id);
 
+        $createInscrip = new Inscription();
+        $form = $this->createForm(InscriptionFormType::class, $createInscrip);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            if ($user) {
+                $createInscrip->setUser($user);
+                $createInscrip->setEvent($events);
+            }
+
+            $entityManager->persist($createInscrip);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_profil');
+        }
+
         return $this->render('event/details.html.twig', [
             'controller_name' => 'EventController',
-            'user'=> $user,
+            'user' => $user,
             'events' => $events,
+            'createInscrip' => $form,
         ]);
     }
 
@@ -88,18 +109,4 @@ class EventController extends AbstractController
         ]);
     }
 
-    /*#[Route('/user/{id}/threads', name: 'app_user_threads')]
-    public function userThreads($id, EntityManagerInterface $entityManager): Response
-    {
-        $userRepository = $entityManager->getRepository(User::class);
-        $user = $userRepository->find($id);
-
-        $eventRepository = $entityManager->getRepository(Event::class);
-        $event = $eventRepository->findBy(['user' => $user]);
-
-        return $this->render('profil/user.html.twig', [
-            'user' => $user,
-            'event' => $event
-        ]);
-    }*/
 }

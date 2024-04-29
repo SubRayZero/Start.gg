@@ -40,9 +40,9 @@
 			<h1>New Tournament</h1>
 
 			<div class="mb-3">
-					{{ form_errors(createEvent.imageFile) }}
-					<label for="exampleInputText1" class="form-label">Image</label>
-					{{ form_widget(createEvent.imageFile, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+				{{ form_errors(createEvent.imageFile) }}
+				<label for="exampleInputText1" class="form-label">Image</label>
+				{{ form_widget(createEvent.imageFile, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
 
 			</div>
 
@@ -99,12 +99,8 @@
 				{{ form_widget(createEvent.category, {'attr':{'class': 'form-control', 'id': 'exampleFormControlTextarea1', 'rows' : '3'}}
 				)}}
 			</div>
-
-			<button type="submit" class="btn btn-primary">Validation</button>
-		</div>
+			<button class="btn button_hover"></button>>Validation
+		</button>
 	</div>
-	{{ form_end(createEvent) }}
-{% endblock %}
-
-
-
+</div>
+{{ form_end(createEvent) }}{% endblock %}
