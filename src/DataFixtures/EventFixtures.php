@@ -31,8 +31,8 @@ class EventFixtures extends AbstractFixtures implements DependentFixtureInterfac
             $event->setDateEnd($this->faker->dateTimeBetween('-3 month', '+3 month'));
 
             $imageFilename = '7994829.jpg';
-            $imagePath = 'public/images/event/' . $imageFilename;
-            $this->faker->image('public/images/event', 1024, 513, null, false);
+            $imagePath = '/public/images/event/' . $imageFilename;
+            $this->faker->image('/public/images/event', 1024, 513, null, false);
 
             $imageFile = new UploadedFile($imagePath, $imageFilename);
 
