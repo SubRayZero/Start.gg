@@ -24,6 +24,15 @@ img {
     color: #FDFDFD;
 }
 
+.button_hover_danger:hover {
+    background-color: #C45353;
+    color: #FDFDFD;
+}
+
+.form_delete{
+    margin-top: 10px;
+}
+
 .offcanvas_black {
     background-color: #202020;
     color: #FDFDFD;

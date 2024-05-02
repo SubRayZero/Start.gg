@@ -145,4 +145,16 @@ class EventController extends AbstractController
             'eventUser' => $eventUser
         ]);
     }
+
+    #[Route('/event/{id}/delete', name: 'app_event_delete', methods: ['POST'])]
+    public function deleteEvent($id, EntityManagerInterface $entityManager): Response
+    {
+        $eventRepository = $entityManager->getRepository(Event::class);
+        $event = $eventRepository->find($id);
+
+        $entityManager->remove($event);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_profil');
+    }
 }

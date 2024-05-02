@@ -5,6 +5,12 @@
 
 {% block body %}
 
+	{% if app.user %}
+		<script>
+			window.location.href = "{{ path('app_profil') }}";
+		</script>
+	{% endif %}
+
 	<div class="container container_form_log">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
