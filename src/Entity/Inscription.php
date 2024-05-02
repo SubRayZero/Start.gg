@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\InscriptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,6 +18,7 @@ class Inscription
     private ?string $pseudo = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Email(message: "L'adresse e-mail doit être dans un format valide.")]
     private ?string $mail = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscription')]

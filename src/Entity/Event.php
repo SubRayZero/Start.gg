@@ -31,16 +31,20 @@ class Event
     private ?int $cashprize = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\GreaterThan("today", message: "La date de début doit être postérieure à la date d'aujourd'hui.")]
     private ?\DateTimeInterface $date_start = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\LessThan(propertyPath: "date_start", message: "La date de début d'inscription doit être antérieure à la date de début du tournoi.")]
     private ?\DateTimeInterface $date_start_inscrip = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\LessThan(propertyPath: "date_start", message: "La date de fin d'inscription doit être antérieure à la date de début du tournoi.")]
+    #[Assert\GreaterThan(propertyPath: "date_start_inscrip", message: "La date de fin doit être ultérieure à la date de début de l'inscription.")]
     private ?\DateTimeInterface $date_end_inscrip = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\GreaterThan(propertyPath: "date_start", message: "La date de fin doit être ultérieure à la date de début.")]
+    #[Assert\GreaterThan(propertyPath: "date_start", message: "La date de fin doit être ultérieure à la date de début du tournoi.")]
     private ?\DateTimeInterface $date_end = null;
 
     #[ORM\ManyToOne(inversedBy: 'event')]
