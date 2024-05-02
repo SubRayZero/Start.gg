@@ -59,9 +59,6 @@ class Event
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'events')]
     private Collection $category;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Rank $ranked = null;
-
     #[Vich\UploadableField(mapping: 'event', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
@@ -225,18 +222,6 @@ class Event
     public function removeCategory(Category $category): static
     {
         $this->category->removeElement($category);
-
-        return $this;
-    }
-
-    public function getRanked(): ?Rank
-    {
-        return $this->ranked;
-    }
-
-    public function setRanked(?Rank $ranked): static
-    {
-        $this->ranked = $ranked;
 
         return $this;
     }

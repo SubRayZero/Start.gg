@@ -53,7 +53,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\OneToMany(targetEntity: Inscription::class, mappedBy: 'user')]
     private Collection $inscription;
-
+    
     public function __construct()
     {
         $this->event = new ArrayCollection();

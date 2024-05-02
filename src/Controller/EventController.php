@@ -70,6 +70,7 @@ class EventController extends AbstractController
         $events = $eventRepository->find($id);
 
         $createInscrip = new Inscription();
+
         $form = $this->createForm(InscriptionFormType::class, $createInscrip);
         $form->handleRequest($request);
 
@@ -89,16 +90,12 @@ class EventController extends AbstractController
         $inscriptionRepository = $entityManager->getRepository(Inscription::class);
         $inscripUser = $inscriptionRepository->findBy(['user' => $user, 'event' => $events]);
 
-        $rankRepository = $entityManager->getRepository(Rank::class);
-        $rank = $rankRepository->findBy(['inscription' => $createInscrip]);
-
         return $this->render('event/details.html.twig', [
             'controller_name' => 'EventController',
             'user' => $user,
             'events' => $events,
             'createInscrip' => $form,
             'inscripUser' => $inscripUser,
-            'rank' => $rank,
         ]);
     }
 

@@ -30,6 +30,9 @@ class Inscription
     #[ORM\ManyToOne(inversedBy: 'inscription')]
     private ?Team $team = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $Ranked = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +94,18 @@ class Inscription
     public function setTeam(?Team $team): static
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getRanked(): ?int
+    {
+        return $this->Ranked;
+    }
+
+    public function setRanked(?int $Ranked): static
+    {
+        $this->Ranked = $Ranked;
 
         return $this;
     }

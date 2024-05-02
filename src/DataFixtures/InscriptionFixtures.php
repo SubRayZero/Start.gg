@@ -16,12 +16,13 @@ class InscriptionFixtures extends AbstractFixtures implements DependentFixtureIn
 
             $inscription->setMail($this->faker->email());
             $inscription->setPseudo($this->faker->userName());
-
-            $this->setReference('inscription_' .$i , $inscription);
+            $inscription->setRanked($this->faker->randomNumber(1, true));
 
             $inscription->setUser($this->getReference('user_' . $this->faker->randomNumber(1, 5)));
             $inscription->setEvent($this->getReference('event_' . $this->faker->randomNumber(1, 5)));
-           $inscription->setTeam($this->getReference('team_' . $this->faker->randomNumber(1, 4)));
+            $inscription->setTeam($this->getReference('team_' . $this->faker->randomNumber(1, 4)));
+
+           $this->setReference('inscription_' . $i, $inscription);
 
             $manager->persist($inscription);
         }
