@@ -53,44 +53,44 @@
 					<ul class="list-group list-group-horizontal">
 						<li class="list-group-item item_place">{{ inscription.pseudo }}</li>
 						<li class="list-group-item item_place_rank">
-							{% if rank %}
-								{{ rank }}</p>
-						{% else %}
 							<p>No rank</p>
+						</li>
+						<li class="list-group-item item_place">
+							{% if events.cashprize %}
+								{{ events.cashprize }}
+								$</p>
+						{% else %}
+							<p>No cashprize</p>
 						{% endif %}
 					</li>
-					<li class="list-group-item item_place">
-						{% if events.cashprize %}
-							{{ events.cashprize }}</p>
-					{% else %}
-						<p>No cashprize</p>
-					{% endif %}
-				</li>
-			</ul>
-		</div>
-	{% endfor %}
-{% else %}
-	<p>No players yet registered for this tournament. Be the first !</p>
-{% endif %}</div><div class="offcanvas offcanvas-start offcanvas_black" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-<div class="offcanvas-header">
-	<h2 class="offcanvas-title" id="offcanvasExampleLabel">Inscription</h2>
-	<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</ul>
+			</div>
+		{% endfor %}
+	{% else %}
+		<p>No players yet registered for this tournament. Be the first !</p>
+	{% endif %}
 </div>
-{{ form_start(createInscrip) }}
-{{ form_errors(createInscrip) }}
-<div class="offcanvas-body">
-	<div class="mb-3">
-		{{ form_errors(createInscrip.pseudo) }}
-		<label for="exampleInputText1" class="form-label">Pseudo</label>
-		{{ form_widget(createInscrip.pseudo, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+<div class="offcanvas offcanvas-start offcanvas_black" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+	<div class="offcanvas-header">
+		<h2 class="offcanvas-title" id="offcanvasExampleLabel">Inscription</h2>
+		<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	</div>
-	<div class="mb-3">
-		{{ form_errors(createInscrip.mail) }}
-		<label for="exampleInputText1" class="form-label">Email</label>
-		{{ form_widget(createInscrip.mail, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+	{{ form_start(createInscrip) }}
+	{{ form_errors(createInscrip) }}
+	<div class="offcanvas-body">
+		<div class="mb-3">
+			{{ form_errors(createInscrip.pseudo) }}
+			<label for="exampleInputText1" class="form-label">Pseudo</label>
+			{{ form_widget(createInscrip.pseudo, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+		</div>
+		<div class="mb-3">
+			{{ form_errors(createInscrip.mail) }}
+			<label for="exampleInputText1" class="form-label">Email</label>
+			{{ form_widget(createInscrip.mail, {'attr': {'class': 'form-control', 'id': 'exampleInputText1'}}) }}
+		</div>
+		<button class="btn button_hover">
+			Validation
+		</button>
+		{{ form_end(createInscrip) }}
 	</div>
-	<button class="btn button_hover">
-		Validation
-	</button>
-	{{ form_end(createInscrip) }}
-</div></div></div>{% endblock %}
+</div></div>{% endblock %}
