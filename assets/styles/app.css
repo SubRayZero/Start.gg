@@ -87,13 +87,13 @@ img {
 }
 
 .card_flex {
-    margin-top: 40px;
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-
     gap: 30px;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 150px;
 }
 
 .card_black {
@@ -195,8 +195,8 @@ img {
 }
 
 .container_filter_card {
-    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
 
     margin-top: 50px;
