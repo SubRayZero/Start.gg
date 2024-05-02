@@ -7,11 +7,19 @@
 	<section class="container_title">
 		<div class="title">Start.wp
 			<p class="sub_title">Community through competition</p>
-			<a href="{{ path('app_register') }}">
-				<button class="btn button_hover">Organize a competition
-				</button>
-			</a>
-			<a href="{{ path('app_profil') }}">
+
+			{% if app.user %}
+				<a href="{{ path('app_create_event') }}">
+					<button class="btn button_hover">Organize a competition
+					</button>
+				</a>
+			{% else %}
+				<a href="{{ path('app_login') }}">
+					<button class="btn button_hover">Organize a competition
+					</button>
+				</a>
+			{% endif %}
+			<a href="{{ path('app_event_filter') }}">
 				<button class="btn button_hover">Find a competition
 				</button>
 			</a>
@@ -22,7 +30,7 @@
 			<div class="card" style="width: 18rem;">
 				<img src={{ vich_uploader_asset(event, 'imageFile') }}>
 				<div class="card-body">
-					<h3 class="card-title">{{ event.name}}</h3>				
+					<h3 class="card-title">{{ event.name}}</h3>
 					<p class="card-text">{{event.cashprize}}
 						$</p>
 					<p>

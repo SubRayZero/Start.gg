@@ -69,10 +69,17 @@ class EventController extends AbstractController
         $eventRepository = $entityManager->getRepository(Event::class);
         $events = $eventRepository->find($id);
 
+
+
         $createInscrip = new Inscription();
 
         $form = $this->createForm(InscriptionFormType::class, $createInscrip);
         $form->handleRequest($request);
+
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();

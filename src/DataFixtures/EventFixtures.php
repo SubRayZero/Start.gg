@@ -7,11 +7,12 @@ use App\Entity\Event;
 use App\Entity\Rank;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Faker\Container\ContainerInterface;
+use Faker\Core\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class EventFixtures extends AbstractFixtures implements DependentFixtureInterface
 {
-
     public function load(ObjectManager $manager)
     {
         $categories = $manager->getRepository(Category::class)->findAll();
@@ -28,6 +29,14 @@ class EventFixtures extends AbstractFixtures implements DependentFixtureInterfac
             $event->setDateStartInscrip($this->faker->dateTimeBetween('-3 month', '+3 month'));
             $event->setDateEndInscrip($this->faker->dateTimeBetween('-2 month', '+2 month'));
             $event->setDateEnd($this->faker->dateTimeBetween('-3 month', '+3 month'));
+
+            $imageFilename = '7994829.jpg';
+            $imagePath = 'public/images/event/' . $imageFilename;
+            $this->faker->image('public/images/event', 1024, 513, null, false);
+
+            $imageFile = new UploadedFile($imagePath, $imageFilename);
+
+            $event->setImageFile($imageFile);
 
             $this->setReference('event_' . $i, $event);
 
