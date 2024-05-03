@@ -41,9 +41,13 @@
 			{{ events.dateendinscrip | date("m/d/y")}}
 		</span>
 	</p>
-	<button class="btn button_hover" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-		Inscription
-	</button>
+
+
+	{% if not app.user == events.user %}
+		<button class="btn button_hover" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+			Inscription
+		</button>
+	{% endif %}
 
 
 	<div class="container container_tournament">

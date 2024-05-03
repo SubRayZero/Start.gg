@@ -154,10 +154,20 @@ class EventController extends AbstractController
             $events[] = $inscription->getEvent();
         }
 
+        $eventRepository = $entityManager->getRepository(Event::class);
+        $createdEvents = $eventRepository->findBy(['user' => $user]);
+
+        foreach ($createdEvents as $event) {
+            if (!in_array($event, $events)) {
+                $events[] = $event;
+            }
+        }
+
         return $this->render('profil/index.html.twig', [
             'events' => $events,
         ]);
     }
+
 
 
     #[Route('/event/{id}/delete', name: 'app_event_delete', methods: ['POST'])]
