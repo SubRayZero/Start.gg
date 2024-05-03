@@ -166,28 +166,9 @@ img {
     margin-top: 100px;
 }
 
-.result_tournament {
+.container_result{
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.item_place {
-    height: 100px;
-    width: 200px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.item_place_rank {
-    height: 100px;
-    width: 400px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .container_filter {
@@ -276,6 +257,11 @@ img {
 
     .container_filter{
         margin-left: 10px;
+    }
+
+    .list_reponsive{
+        display: flex;
+        flex-direction: column;
     }
 
 }
