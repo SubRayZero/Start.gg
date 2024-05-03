@@ -43,12 +43,11 @@
 	</p>
 
 
-	{% if not app.user == events.user %}
+	{% if app.user != events.user and not inscripUser %}
 		<button class="btn button_hover" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
 			Inscription
 		</button>
 	{% endif %}
-
 
 	<div class="container container_tournament">
 		{% if inscripUser is not empty %}
