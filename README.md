@@ -1,4 +1,4 @@
-# Start.wp
+# Start.gg
 
 👉 Pour faire ce brief, nous étions seul et nous avions 2 semaines. Le but était de créer un site de notre choix de façon responsive, fonctionnel et d'utiliser Symfony. Nous devions surtout montrer notre capacité à faire un site de qualité. Nous étions libre sur le choix de notre design et de nos références. Il devait être codé avec le framework Symphony.
 
