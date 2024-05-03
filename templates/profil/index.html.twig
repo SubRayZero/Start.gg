@@ -22,11 +22,9 @@
 
 	<section class="section_profil">
 		<h5 class="card-title">Tournaments</h5>
-
-
-		{% if eventUser is not empty %}
+		{% if events is not empty %}
 			<div class="container_filter_card">
-				{% for event in eventUser %}
+				{% for event in events %}
 					<div class="card" style="width: 18rem;">
 						<img src={{ vich_uploader_asset(event, 'imageFile') }}>
 						<div class="card-body">
@@ -44,9 +42,12 @@
 								<button class="btn button_hover">Details
 								</button>
 							</a>
-							<form class="form_delete" action="{{ path('app_event_delete', {'id': event.id}) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this event?');">
-								<button type="submit" class="btn button_hover_danger">Delete event</button>
-							</form>
+							{% if app.user == event.user %}
+								<form class="form_delete" action="{{ path('app_event_delete', {'id': event.id}) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');">
+									<input type="hidden" name="_method" value="DELETE">
+									<button type="submit" class="btn button_hover_danger">Supprimer l'événement</button>
+								</form>
+							{% endif %}
 
 						</div>
 					</div>

@@ -145,13 +145,20 @@ class EventController extends AbstractController
     public function eventAllByUser(EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
-        $eventRepository = $entityManager->getRepository(Event::class);
-        $eventUser = $eventRepository->findBy(['user' => $user]);
+
+        $inscriptionRepository = $entityManager->getRepository(Inscription::class);
+        $inscriptions = $inscriptionRepository->findBy(['user' => $user]);
+        $events = [];
+
+        foreach ($inscriptions as $inscription) {
+            $events[] = $inscription->getEvent();
+        }
 
         return $this->render('profil/index.html.twig', [
-            'eventUser' => $eventUser
+            'events' => $events,
         ]);
     }
+
 
     #[Route('/event/{id}/delete', name: 'app_event_delete', methods: ['POST'])]
     public function deleteEvent($id, EntityManagerInterface $entityManager): Response

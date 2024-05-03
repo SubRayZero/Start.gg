@@ -30,6 +30,7 @@ class Event
     #[ORM\Column]
     private ?int $cashprize = null;
 
+
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\GreaterThan("today", message: "La date de début doit être postérieure à la date d'aujourd'hui.")]
     private ?\DateTimeInterface $date_start = null;
