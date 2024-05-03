@@ -29,7 +29,7 @@ img {
     color: #FDFDFD;
 }
 
-.form_delete{
+.form_delete {
     margin-top: 10px;
 }
 
@@ -89,11 +89,11 @@ img {
 .card_flex {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
 
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-left: 150px;
 }
 
 .card_black {
@@ -213,4 +213,57 @@ img {
 
 .filter_black:hover {
     color: #0FC9BE;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .container_filter_card{
+        display: flex;
+        justify-content: center;
+
+        margin-left: 0px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .sub_title {
+        position: relative;
+        width: 600px;
+        height: 39px;
+
+        font-size: 20px;
+        text-transform: lighter;
+        font-weight: normal;
+
+        text-align: center;
+    }
+
+    
+    .container_filter{
+        margin-left: 40px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .sub_title {
+        position: relative;
+        width: 600px;
+        height: 39px;
+
+        font-size: 14px;
+        text-transform: lighter;
+        font-weight: normal;
+
+        text-align: center;
+    }
+
+    .responsive {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container_filter{
+        margin-left: 10px;
+    }
+
 }
