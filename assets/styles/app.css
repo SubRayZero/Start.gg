@@ -192,6 +192,7 @@ img {
 
 .container_filter {
     margin-left: 100px;
+    margin-top: 20px;
 }
 
 .container_filter_card {
@@ -241,6 +242,13 @@ img {
     
     .container_filter{
         margin-left: 40px;
+    }
+
+    .section_profil {
+        display: flex;
+        margin-left: 0px;
+        justify-content: center;
+
     }
 }
 
