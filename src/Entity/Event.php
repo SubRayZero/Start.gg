@@ -30,7 +30,6 @@ class Event
     #[ORM\Column]
     private ?int $cashprize = null;
 
-
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\GreaterThan("today", message: "La date de début doit être postérieure à la date d'aujourd'hui.")]
     private ?\DateTimeInterface $date_start = null;
@@ -55,7 +54,7 @@ class Event
     /**
      * @var Collection<int, inscription>
      */
-    #[ORM\OneToMany(targetEntity: Inscription::class, mappedBy: 'event')]
+    #[ORM\OneToMany(targetEntity: Inscription::class, mappedBy: 'event', cascade: ["remove"])]
     private Collection $inscription;
 
     /**
@@ -198,7 +197,6 @@ class Event
     public function removeInscription(Inscription $inscription): static
     {
         if ($this->inscription->removeElement($inscription)) {
-            // set the owning side to null (unless already changed)
             if ($inscription->getEvent() === $this) {
                 $inscription->setEvent(null);
             }
